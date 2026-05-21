@@ -3,6 +3,15 @@
 using namespace std;
 
 class Hayyan16 {
+public:
+  Hayyan16();
+  Hayyan16(Hayyan16 &&) = default;
+  Hayyan16(const Hayyan16 &) = default;
+  Hayyan16 &operator=(Hayyan16 &&) = default;
+  Hayyan16 &operator=(const Hayyan16 &) = default;
+  ~Hayyan16();
+
+private:
   /*
    * Memory Map of the 64KB of RAM (Bassed off of the Astro-8):
    *
@@ -12,7 +21,11 @@ class Hayyan16 {
    * 0xb000-0xffff: Video RAM (20KB or a 160x128 display)
    */
 
-  array<uint16_t, 65536> ram; // 64KB of RAM
+  array<uint16_t, 65536> raam;
   array<uint16_t, 8> registers;
-  uint16_t prog_counter = 0;
+  uint16_t progCounter;
 };
+
+Hayyan16::Hayyan16() {}
+
+Hayyan16::~Hayyan16() {}
