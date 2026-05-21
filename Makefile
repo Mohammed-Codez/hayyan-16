@@ -10,7 +10,7 @@ LIBS = -L$(BREW_PREFIX)/lib -lraylib
 FRAMEWORKS = -framework OpenGL -framework Cocoa -framework IOKit -framework CoreAudio -framework CoreVideo
 
 # Source and Output
-SRC = src/main.cpp
+SRC = src/*.cpp
 OUT = bin/main
 
 all:

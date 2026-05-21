@@ -3,13 +3,15 @@
 #include <raylib.h>
 using namespace std;
 
-const int screenWidth = 256;
-const int screenHeight = 240;
+const int screenWidth = 160;
+const int screenHeight = 128;
+const int screenScale = 5;
 
 double t = 0.0;
 
 int main(int argc, char *argv[]) {
-  InitWindow(screenWidth, screenHeight, "Thing");
+  InitWindow(screenWidth * screenScale, screenHeight * screenScale,
+             "Hayyan-16");
   SetTargetFPS(60);
 
   while (!WindowShouldClose()) {
@@ -21,9 +23,10 @@ int main(int argc, char *argv[]) {
             static_cast<unsigned char>(
                 trunc(128 * (sin((x + y - t) / 10) + 1))),
             static_cast<unsigned char>(
-                trunc(128 * (sin((y + sin(t)) / 10) + 1))),
+                trunc(128 * (sin((y + sin(t / 10) * 10) / 10) + 1))),
             255};
-        DrawPixel(x, y, screenColor);
+        DrawRectangle(x * screenScale, y * screenScale, screenScale,
+                      screenScale, screenColor);
       }
     }
     EndDrawing();
